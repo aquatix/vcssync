@@ -1,0 +1,8 @@
+webhaak:
+    github: git@github.com:aquatix/webhaak.git
+    backup: user@example.com:/var/local/git/webhaak
+
+aquariusoft.org:
+    repo: git@github.com:aquatix/aquariusoft.org.git
+    local: /home/myuser/projects/aquariusoft.org
+    server: user@example.com:/srv/aquariusoft.org
