@@ -5,6 +5,7 @@
 #    pip-compile --output-file requirements-dev.txt requirements-dev.in
 #
 astroid==1.6.0            # via pylint
+click==6.7
 gitdb2==2.0.3             # via gitpython
 gitpython==2.1.8
 isort==4.2.15             # via pylint

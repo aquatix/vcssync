@@ -1,5 +1,39 @@
-import git
+import logging
 import os
+import sys
+
+import click
+import git
+import yaml
+
+
+## Create logger
+logger = logging.getLogger('vcssync')
+logger.setLevel(logging.DEBUG)
+
+# create file handler which logs even debug messages
+fh = logging.FileHandler('vcssync.log')
+fh.setLevel(logging.DEBUG)
+# create formatter and add it to the handlers
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+fh.setFormatter(formatter)
+# add the handlers to the logger
+logger.addHandler(fh)
+
+# create stdout logger
+ch = logging.StreamHandler(sys.stdout)
+ch.setLevel(logging.WARNING)
+formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+ch.setFormatter(formatter)
+logger.addHandler(ch)
+
+
+try:
+    import settings
+except ModuleNotFoundError:
+    print('Please create a settings.py from settings.example.py with your own configuration')
+    sys.exit(-1)
+
 
 def get_repo_basename(repo_url):
     """
@@ -59,3 +93,34 @@ def update_repo(config):
         #logger.debug(apprepo.git.branch())
         result = apprepo.git.checkout()
     return result
+
+
+## Main program
+@click.group()
+def cli():
+    """
+    whosthere
+    """
+    pass
+
+
+@cli.command()
+def pull_everything():
+    """
+    Pull all configured repositories, with all their branches and tags
+    """
+    # update_repo()
+    pass
+
+
+if not hasattr(main, '__file__'):
+    """
+    Running in interactive mode in the Python shell
+    """
+    print("vcssync running interactively in Python shell")
+
+elif __name__ == '__main__':
+    """
+    vcssync is ran standalone, rock and roll
+    """
+    cli()
