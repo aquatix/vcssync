@@ -7,5 +7,8 @@
 click==7.0
 gitdb2==2.0.5             # via gitpython
 gitpython==2.1.11
-pyyaml==3.13
+python-dateutil==2.8.0    # via strictyaml
+ruamel.yaml==0.15.88      # via strictyaml
+six==1.12.0               # via python-dateutil
 smmap2==2.0.5             # via gitdb2
+strictyaml==1.0.0

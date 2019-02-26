@@ -4,8 +4,7 @@ import sys
 
 import click
 import git
-import yaml
-
+import strictyaml
 
 ## Create logger
 logger = logging.getLogger('vcssync')
